@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+      "target": "ES2020",                
+      "module": "CommonJS",              
+      "outDir": "dist",                  
+      "rootDir": ".",                    
+      "declaration": true,               
+      "declarationDir": "dist",          
+      "esModuleInterop": true,           
+      "forceConsistentCasingInFileNames": true, 
+      "strict": false,                    
+      "skipLibCheck": true               
+    },
+    "include": [
+      "index.ts",                        
+      "base/**/*",                      
+      "tree-chart/**/*"                 
+    ],
+    "exclude": [
+      "node_modules",                    
+      "dist"                           
+    ]
+  }

@@ -1,0 +1,27 @@
+{
+  "name": "@bencamus/vue3-tree-chart",
+  "version": "0.1.0",
+  "main": "dist/vue3-tree-chart.umd.js",
+  "module": "dist/vue3-tree-chart.esm.js",
+  "types": "dist/vue3-tree-chart.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "build": "vite build",
+    "prepublishOnly": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.1",
+    "@vue/tsconfig": "^0.7.0",
+    "typescript": "~5.7.2",
+    "vite": "^6.2.0",
+    "less": "^4.2.2",
+    "@types/node": "^20.0.0"
+  },
+  "peerDependencies": {
+    "vue": "^3.0.0",
+    "@bencamus/tree-chart-core": "^0.1.0"
+  },
+  "license": "MIT",
+  "description": "Vue 3 component for tree chart visualization."
+}
