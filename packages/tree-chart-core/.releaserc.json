@@ -2,6 +2,7 @@
   "branches": ["main"],
   "repositoryUrl": "https://github.com/kamus1/tree-chart",
   "preset": "conventionalcommits",
+  "tagFormat": "@bencamus/tree-chart-core@${version}",
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
