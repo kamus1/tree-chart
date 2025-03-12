@@ -12,7 +12,7 @@
     "build": "vite build",
     "prepublishOnly": "echo 'No build required for source-only package'",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "release": "semantic-release"
+    "release": "semantic-release --legacy-peer-deps"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.2.1",

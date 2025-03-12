@@ -17,26 +17,41 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20.x'
           cache: 'npm'
+          
       - name: Install Dependencies
         run: npm ci
+        
       - name: Build
-        run: npm run build
-      - name: Check changes and release tree-chart-core
+        run: npx turbo build
+        
+      - name: Release Core Package
         working-directory: packages/tree-chart-core
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          git diff --name-only @bencamus/tree-chart-core@0.1.1 HEAD | grep -q "^packages/tree-chart-core/" && npx semantic-release --legacy-peer-deps || echo "No changes in tree-chart-core"
-      - name: Check changes and release vue3-tree-chart
+          git diff --quiet HEAD~ HEAD ./
+          if [ $? -ne 0 ]; then
+            npm run release
+          else
+            echo "No changes in tree-chart-core, skipping release"
+          fi
+          
+      - name: Release Vue Package
         working-directory: packages/vue3-tree-chart
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          git diff --name-only @bencamus/vue3-tree-chart@0.1.2 HEAD | grep -q "^packages/vue3-tree-chart/" && npx semantic-release --legacy-peer-deps || echo "No changes in vue3-tree-chart"
+          git diff --quiet HEAD~ HEAD ./ || git diff --quiet HEAD~ HEAD ../tree-chart-core/
+          if [ $? -ne 0 ]; then
+            npm run release
+          else
+            echo "No changes affecting vue3-tree-chart, skipping release"
+          fi
