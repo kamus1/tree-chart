@@ -54,3 +54,5 @@ ww
 .pnp.*
 .cache/
 tests
+
+.github

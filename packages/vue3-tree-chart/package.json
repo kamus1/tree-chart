@@ -1,16 +1,20 @@
 {
   "name": "@bencamus/vue3-tree-chart",
-  "version": "0.1.2",
+  "version": "0.1.6",
   "main": "src/index.ts",
   "module": "src/index.ts",
   "types": "src/index.ts",
   "style": "src/styles/vue3-tree-chart.css",
-  "files": ["src"],
+  "files": [
+    "src"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "vite build",
     "prepublishOnly": "echo 'No build required for source-only package'",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "release": "semantic-release"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.2.1",
