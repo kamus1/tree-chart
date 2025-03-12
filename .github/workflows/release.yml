@@ -26,15 +26,17 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
-      - name: Release tree-chart-core
+      - name: Check changes and release tree-chart-core
         working-directory: packages/tree-chart-core
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release --legacy-peer-deps || true
-      - name: Release vue3-tree-chart
+        run: |
+          git diff --name-only @bencamus/tree-chart-core@0.1.1 HEAD | grep -q "^packages/tree-chart-core/" && npx semantic-release --legacy-peer-deps || echo "No changes in tree-chart-core"
+      - name: Check changes and release vue3-tree-chart
         working-directory: packages/vue3-tree-chart
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release --legacy-peer-deps || true
+        run: |
+          git diff --name-only @bencamus/vue3-tree-chart@0.1.2 HEAD | grep -q "^packages/vue3-tree-chart/" && npx semantic-release --legacy-peer-deps || echo "No changes in vue3-tree-chart"
