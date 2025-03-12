@@ -1,3 +1,9 @@
+## [0.1.5](https://github.com/kamus1/tree-chart/compare/@bencamus/tree-chart-core@0.1.4...@bencamus/tree-chart-core@0.1.5) (2025-03-12)
+
+### Bug Fixes
+
+* **tree-chart-core:** test fix v4.1 ([9af46cb](https://github.com/kamus1/tree-chart/commit/9af46cb4d2bacfa495e2f4dde7461752af93b87f))
+
 ## [0.1.4](https://github.com/kamus1/tree-chart/compare/@bencamus/tree-chart-core@0.1.3...@bencamus/tree-chart-core@0.1.4) (2025-03-12)
 
 ### Bug Fixes
