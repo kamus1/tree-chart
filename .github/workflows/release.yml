@@ -5,40 +5,36 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write
+  packages: write
+
 jobs:
   release:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 
-
+          fetch-depth: 0
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20.x'
           cache: 'npm'
-
       - name: Install Dependencies
         run: npm ci
-
       - name: Build
         run: npm run build
-
-      #tree-chart-core
       - name: Release tree-chart-core
         working-directory: packages/tree-chart-core
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release || true
-
-      #vue3-tree-chart
+        run: npx semantic-release --legacy-peer-deps || true
       - name: Release vue3-tree-chart
         working-directory: packages/vue3-tree-chart
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release || true
+        run: npx semantic-release --legacy-peer-deps || true
