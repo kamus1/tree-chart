@@ -1,16 +1,28 @@
 {
   "branches": ["main"],
-  "repositoryUrl": "https://github.com/kamus1/tree-chart",
   "preset": "conventionalcommits",
   "tagFormat": "@bencamus/tree-chart-core@${version}",
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
-    ["@semantic-release/changelog", { "changelogFile": "CHANGELOG.md" }],
-    ["@semantic-release/npm", { "npmPublish": true }],
-    ["@semantic-release/git", {
-      "assets": ["package.json", "CHANGELOG.md"],
-      "message": "chore(release): @bencamus/tree-chart-core@${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
-    }]
+    [
+      "@semantic-release/changelog",
+      {
+        "changelogFile": "CHANGELOG.md"
+      }
+    ],
+    [
+      "@semantic-release/npm",
+      {
+        "npmPublish": true
+      }
+    ],
+    [
+      "@semantic-release/git",
+      {
+        "assets": ["package.json", "CHANGELOG.md"],
+        "message": "chore(release): @bencamus/tree-chart-core@${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+      }
+    ]
   ]
 }
