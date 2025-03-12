@@ -38,7 +38,7 @@ yarn-error.log*
 *.pem
 
 
-/node_modules/
+/packages/*/node_modules/
 /packages/*/dist/
 /packages/*/build/
 .DS_Store
