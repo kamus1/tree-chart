@@ -8,9 +8,6 @@
   "files": [
     "src"
   ],
-  "publishConfig": {
-    "access": "public"
-  },
   "scripts": {
     "build": "vite build",
     "prepublishOnly": "echo 'No build required for source-only package'",
