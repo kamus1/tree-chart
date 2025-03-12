@@ -6,7 +6,7 @@ on:
       - main
 
 permissions:
-  contents: write 
+  contents: write
   pull-requests: write
 
 jobs:
@@ -30,6 +30,19 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Debug NPM_TOKEN
+        run: |
+          echo "NPM_TOKEN is: ${{ secrets.NPM_TOKEN }}"
+          if [ -z "${{ secrets.NPM_TOKEN }}" ]; then echo "NPM_TOKEN is empty!"; fi
+
+      - name: Configure npm authentication
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+          cat ~/.npmrc
+          npm whoami || echo "npm whoami failed"
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Create Release Pull Request or Publish to npm
         uses: changesets/action@v1
