@@ -9,6 +9,7 @@ export default defineConfig({
       '@': resolve(__dirname, 'src'),
     },
   },
+  // for testing
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),

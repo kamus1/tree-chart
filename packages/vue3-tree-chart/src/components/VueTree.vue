@@ -31,7 +31,7 @@ import TreeChartCore, {
   DEFAULT_LEVEL_HEIGHT,
   TreeLinkStyle,
   Direction,
-} from "@bencamus/tree-chart-core";
+} from "../../../tree-chart-core/index.ts";
 
 interface TreeConfig {
   nodeWidth?: number;
@@ -177,28 +177,24 @@ export default defineComponent({
 });
 </script>
 
-<style lang="less">
-.tree-container {
-  .node {
-    fill: grey !important;
-  }
-
-  .link {
-    stroke-width: 2px !important;
-    fill: transparent !important;
-    stroke: #cecece !important;
-  }
-
-  .link-hidden {
-    display: none;
-    stroke-width: 2px !important;
-    fill: transparent !important;
-    stroke: #FC2020FF !important;
-  }
+<style>
+.tree-container .node {
+  fill: grey !important;
 }
-</style>
 
-<style lang="less" scoped>
+.tree-container .link {
+  stroke-width: 2px !important;
+  fill: transparent !important;
+  stroke: #cecece !important;
+}
+
+.tree-container .link-hidden {
+  display: none;
+  stroke-width: 2px !important;
+  fill: transparent !important;
+  stroke: #FC2020FF !important;
+}
+
 .tree-node-item-enter,
 .tree-node-item-leave-to {
   opacity: 0;
@@ -206,32 +202,33 @@ export default defineComponent({
 
 .tree-node-item-enter-active,
 .tree-node-item-leave-active {
+
 }
 
 .tree-container {
   touch-action: none;
   position: relative;
   overflow: hidden;
+}
 
-  .vue-tree {
-    position: relative;
-  }
+.tree-container .vue-tree {
+  position: relative;
+}
 
-  >svg,
-  .dom-container {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-    overflow: visible;
-    transform-origin: 0 50%;
-  }
+.tree-container > svg,
+.tree-container .dom-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: visible;
+  transform-origin: 0 50%;
+}
 
-  .dom-container {
-    z-index: 1;
-    pointer-events: none;
-  }
+.tree-container .dom-container {
+  z-index: 1;
+  pointer-events: none;
 }
 
 .node-slot {

@@ -1,13 +1,14 @@
 {
   "name": "@bencamus/vue3-tree-chart",
-  "version": "0.1.0",
-  "main": "dist/vue3-tree-chart.umd.js",
-  "module": "dist/vue3-tree-chart.esm.js",
-  "types": "dist/vue3-tree-chart.d.ts",
-  "files": ["dist"],
+  "version": "0.1.2",
+  "main": "src/index.ts",
+  "module": "src/index.ts",
+  "types": "src/index.ts",
+  "style": "src/styles/vue3-tree-chart.css",
+  "files": ["src"],
   "scripts": {
     "build": "vite build",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "echo 'No build required for source-only package'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
@@ -16,12 +17,13 @@
     "typescript": "~5.7.2",
     "vite": "^6.2.0",
     "less": "^4.2.2",
-    "@types/node": "^20.0.0"
+    "@types/node": "^20.0.0",
+    "vite-plugin-less": "^2.0.0"
   },
   "peerDependencies": {
     "vue": "^3.0.0",
     "@bencamus/tree-chart-core": "^0.1.0"
   },
   "license": "MIT",
-  "description": "Vue 3 component for tree chart visualization."
+  "description": "Vue 3 component for tree chart visualization (source code)."
 }
