@@ -20,9 +20,11 @@
     "vite": "^6.2.0",
     "@types/node": "^20.0.0"
   },
+  "dependencies": {
+  "@bencamus/tree-chart-core": "^0.1.0"
+  },
   "peerDependencies": {
-    "vue": "^3.0.0",
-    "@bencamus/tree-chart-core": "^0.1.0"
+    "vue": "^3.0.0"
   },
   "license": "MIT",
   "description": "Vue 3 component for tree chart visualization (source code)."

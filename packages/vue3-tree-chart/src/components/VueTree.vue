@@ -31,7 +31,7 @@ import TreeChartCore, {
   DEFAULT_LEVEL_HEIGHT,
   TreeLinkStyle,
   Direction,
-} from "../../../tree-chart-core/index.ts";
+} from "@bencamus/tree-chart-core";
 
 interface TreeConfig {
   nodeWidth?: number;
