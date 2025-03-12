@@ -30,28 +30,15 @@ jobs:
       - name: Build
         run: npx turbo build
         
-      - name: Release Core Package
-        working-directory: packages/tree-chart-core
+      - name: Check and Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          git diff --quiet HEAD~ HEAD ./
-          if [ $? -ne 0 ]; then
-            npm run release
-          else
-            echo "No changes in tree-chart-core, skipping release"
-          fi
+          LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "HEAD~100")
+          echo "Last tag: $LAST_TAG"
           
-      - name: Release Vue Package
-        working-directory: packages/vue3-tree-chart
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          git diff --quiet HEAD~ HEAD ./ || git diff --quiet HEAD~ HEAD ../tree-chart-core/
-          if [ $? -ne 0 ]; then
-            npm run release
-          else
-            echo "No changes affecting vue3-tree-chart, skipping release"
-          fi
+          echo "Packages changed since $LAST_TAG:"
+          npx turbo run build --filter="...[${LAST_TAG}]" --dry=json | jq -r '.tasks[].package'
+          
+          npx turbo run release --filter="...[${LAST_TAG}]"
