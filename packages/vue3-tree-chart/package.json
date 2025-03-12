@@ -9,16 +9,15 @@
   "scripts": {
     "build": "vite build",
     "prepublishOnly": "echo 'No build required for source-only package'",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "release": "semantic-release"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.2.1",
     "@vue/tsconfig": "^0.7.0",
     "typescript": "~5.7.2",
     "vite": "^6.2.0",
-    "less": "^4.2.2",
-    "@types/node": "^20.0.0",
-    "vite-plugin-less": "^2.0.0"
+    "@types/node": "^20.0.0"
   },
   "peerDependencies": {
     "vue": "^3.0.0",
